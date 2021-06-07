@@ -7,7 +7,6 @@ let personajes = [];
 
 const pillarPersonajes = async () => {
   personajes = await getPersonajes();
-  console.log(personajes);
 };
 
 pillarPersonajes();
@@ -32,13 +31,16 @@ const pintaPersonajes = (personajes) => {
 };
 
 const familiaQueAsesinar = document.querySelector(".familia");
+const errorMatar = document.querySelector(".mensaje");
 
 const matarPersonajes = async () => {
-  console.log(familiaQueAsesinar.value);
-  personajes = await mataPersonajes(familiaQueAsesinar.value);
-  console.log(personajes);
-  borrarPersonajes();
-  cargarPersonajes();
+  try {
+    personajes = await mataPersonajes(familiaQueAsesinar.value);
+    borrarPersonajes();
+    cargarPersonajes();
+  } catch (error) {
+    errorMatar.textContent = error.message;
+  }
 };
 
 const cargarPersonajes = async () => {
