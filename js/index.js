@@ -15,7 +15,6 @@ const pintaPersonajes = (personajes) => {
     const listaPersonajesElemento = document
       .querySelector(".personaje-dummy")
       .cloneNode(true);
-    console.log(listaPersonajesElemento);
     listaPersonajesElemento.classList.remove("personaje-dummy");
     const nombrePersonaje =
       listaPersonajesElemento.querySelector(".nombre-personaje");
