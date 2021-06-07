@@ -4,6 +4,13 @@ const btnCargaPersonajes = document.querySelector(".cargar-personajes");
 const btnMataFamilia = document.querySelector(".matar-familia");
 const listaPersonajes = document.querySelector(".personajes");
 let personajes = [];
+
+const pillarPersonajes = async () => {
+  personajes = await getPersonajes();
+  console.log(personajes);
+};
+
+pillarPersonajes();
 const pintaPersonajes = (personajes) => {
   for (const personaje of personajes) {
     const listaPersonajesElemento = document
@@ -35,9 +42,6 @@ const matarPersonajes = async () => {
 };
 
 const cargarPersonajes = async () => {
-  if (personajes === []) {
-    personajes = await getPersonajes();
-  }
   pintaPersonajes(personajes);
 };
 
