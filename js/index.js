@@ -5,12 +5,8 @@ const btnMataFamilia = document.querySelector(".matar-familia");
 const listaPersonajes = document.querySelector(".personajes");
 let personajes = [];
 
-const pillarPersonajes = async () => {
-  personajes = await getPersonajes();
-};
-
-pillarPersonajes();
 const pintaPersonajes = (personajes) => {
+  borrarPersonajes();
   for (const personaje of personajes) {
     const listaPersonajesElemento = document
       .querySelector(".personaje-dummy")
@@ -36,13 +32,15 @@ const matarPersonajes = async () => {
   try {
     personajes = await mataPersonajes(familiaQueAsesinar.value);
     borrarPersonajes();
-    cargarPersonajes();
+    pintaPersonajes(personajes);
+    errorMatar.textContent = "";
   } catch (error) {
     errorMatar.textContent = error.message;
   }
 };
 
 const cargarPersonajes = async () => {
+  personajes = await getPersonajes();
   pintaPersonajes(personajes);
 };
 
